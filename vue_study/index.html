@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue(1)-创建第一个vue应用</title>
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        {{message}},{{name}}
+    </div>
+</body>
+<script>
+    // let name='123';
+    // let str=`${name}`;
+    // new ajax({
+    //     'url': "",
+    //     'data': "",
+    //     success: function (xhr) {
+
+    //     }
+    // })
+    let data = {
+        message: "hello",
+        name: "vue",
+    };
+    // Object.freeze(data);//让这个对象 不在追踪变化 即 不在是 响应式
+    var app = new Vue({
+        el: "#app",
+        data: data,
+        //生命周期函数  
+        beforeCreate: function () {
+            console.log('beforeCreate');
+        },
+
+        created: function () {
+            console.log('created');
+        },
+
+        beforeMount: function () {
+            console.log('beforeMount');
+        },
+
+        beforeUpdate: function () {
+            console.log(this.message);
+            console.log('beforeUpdate');
+        },
+        updated: function () {
+            console.log('updated');
+        }
+    });
+
+    // vm.$data === data // => true
+    // vm.$el === document.getElementById('example') // => true
+
+    // // $watch 是一个实例方法
+    // vm.$watch('a', function (newValue, oldValue) {
+    //     // 这个回调将在 `vm.a` 改变后调用
+    // })
+    // $("#app").html();
+    //观测值 有没有发生改变 若值改变则触发 watch事件
+    app.$watch("message", function (newVal, oldValue) {
+        console.log(newVal, "newVal1");
+        console.log(oldValue, "oldValue");
+    })
+
+    data.name = 'qxc';
+
+    let data2 = app.$data;//获取VUE的 数据
+    app.$data.message = '你好';
+    // console.log(data2);
+    // console.log(data2.message);
+
+    // let div1 = document.getElementById("app");
+    // let div2 = app.$el;//获取 VUE 使用的元素
+    // console.log(div1);
+    // console.log(div2);
+
+    // if (div1 === div2) {
+    //     console.log("这两个对象选择是一样的");
+    // }
+    /**/
+  //  if()
+</script>
+
+</html>
