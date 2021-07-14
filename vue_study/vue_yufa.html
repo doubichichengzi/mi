@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='vue.js'></script>
+    <style>
+        .red {
+            color: red;
+        }
+
+        #p_c {
+            color: blue;
+            font-size: 26px;
+        }
+
+        .but2 {
+            width: 100px;
+            height: 40px;
+            background-color: palevioletred;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- v-once -->
+        {{msg}}
+        <p>{{raw_html}}</p>
+        <span v-html='raw_html'></span>
+        <p v-html='raw_html'></p>
+
+        <p v-bind:id='p1'>
+            {{msg}}
+        </p>
+        <!-- 为元素添加 属性 -->
+        <button v-bind:class='but2' v-bind:id='p1' v-bind:basename='but_name'
+            v-bind:disabled='but_disabled'>{{button_str}}</button>
+        <div v-bind:id="'list-' + id">123</div>
+        <p>
+            {{num+1}}
+        </p>
+        <p>
+            {{num==1?"我是1":"我不是1"}}
+        </p>
+        <p v-if='see'>看到我</p>
+
+        <p v-for='v in list1'>
+            {{v}}
+        </p>
+        <!-- 这些表达式会在所属 Vue 实例的数据作用域下作为 JavaScript 被解析。有个限制就是，每个绑定都只能包含单个表达式，所以下面的例子都不会生效。 -->
+
+        <!-- 这是语句，不是表达式 -->
+        <!-- {{ var a = 1 }} -->
+
+        <!-- 流控制也不会生效，请使用三元表达式 -->
+        <!-- {{ if (ok) { return message } }} -->
+    </div>
+</body>
+<script>
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            "id": "id111",
+            'msg': "hi vue",
+            "raw_html": "<span class='red'>我是红色</span>",
+            "p1": "p_c",
+            "button_str": "点击我",
+            "but2": "but2",
+            "but_name": "点击我",
+            "but_disabled": true,//false
+            "num": 1,
+            "see": true,//false
+            "list1": [1, 2, 3, 4],
+        }
+    })
+   // vm.msg = '123';
+</script>
+
+</html>
