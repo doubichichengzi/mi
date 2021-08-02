@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='./vue.js'></script>
+    <style>
+        .ageStyle {
+            color: blue !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- v-bind 是绑定 -->
+        <p v-bind:shnl2='shnl'>{{name}}</p>
+        <p v-bind:shnl2='shnl' v-html='age' v-bind:class='ageStyle' v-bind:id='ageid' v-bind:style='agesty1'>{{age}}
+        </p>
+        <p>{{age}}</p>
+        <p>{{xueli}}</p>
+        <p v-if="see">看我</p>
+        <p>{{num*2}}</p>
+        <p>{{num==2?"我是2":"我不是2"}}</p>
+        <span v-for="val in list1">
+            {{val}}
+        </span>
+    </div>
+</body>
+<script>
+    var data = {
+        'name': "乔晓晨",
+        "age": "<span>我的年龄是27</span>",
+        "xueli": "大专",
+        "ageStyle": "ageStyle",
+        "ageid": "ageid",
+        "ages1": "color:red",
+        "shnl": "25",
+        "see": false,
+        "num": 1,
+        "agesty1": "color:red",
+        'list1': [1, 2, 3, 4],
+    };
+    var vm = new Vue({//响应式的前端框架
+        el: "#app",
+        data: data
+    });
+   // data['xueli'] = "本科";
+</script>
+
+</html>
