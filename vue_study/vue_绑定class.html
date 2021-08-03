@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='./vue.js'></script>
+    <style>
+        .active {
+            background: pink;
+        }
+
+        .fontColor {
+            color: red;
+        }
+
+        .active2 {
+            background: blue;
+        }
+
+        .fontColor2 {
+            color: red;
+            // font-size: ;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- v-bind:class='active' -->
+        <div v-bind:class={active:isActive,fontColor:isFontColor}>{{div1Str}}</div>
+        <div v-bind:class=[isActive2?"active2":"",isFontColor2?"fontColor2":""]>{{div2Str}}</div>
+        <!-- style="color:color" -->
+        <div :style="{color:color,fontSize:fontsize,background:isred?'red':''}">hi vue</div>
+    </div>
+</body>
+<script>
+    //vueModel vm
+    var data = {
+        "div1Str": "我是一个中国人",
+        "div2Str": "我居住在beijing",
+        "isActive": true,
+        "isActive2": true,
+        "isFontColor": true,
+        "isFontColor2": false,
+        "color": "green",
+        "fontsize": "26px",
+        "isred": false
+    };
+    var vm = new Vue({
+        el: "#app",
+        data: data,
+    })
+</script>
+
+</html>

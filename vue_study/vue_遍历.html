@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <ul>
+            <li v-for="value,key in shoplist">
+                <!-- <p> {{key}} :{{value}}</p> -->
+                <p>商品名称：{{value.name}}</p>
+                <p>商品价格：{{value.price}}元</p>
+            </li>
+        </ul>
+        <ul>
+            <li v-for="value,key in xielist">
+                <p v-if="key=='nike'">
+                    nike大促销
+                </p>
+                <p v-if="key=='adidas'">
+                    adidas暂时没有促销活动
+                </p>
+                <p v-for="val,ke in value">
+                    <span>商品名称：{{val.name}}</span>
+                    <span>商品价格：{{val.price}}</span>
+                </p>
+            </li>
+        </ul>
+    </div>
+</body>
+<!-- key=>val -->
+<script>
+    var data = {
+        "renlei": {
+            "name": "qxc",
+            "age": "27",
+        }
+    };
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            shoplist: [
+                { "name": "苹果", 'price': "15" },
+                { "name": "香蕉", 'price': "3" },
+            ],
+            xielist: {
+
+                "adidas": {
+                    "sanyecao": { "name": "sanyecao", "price": "199" }
+                },
+                "nike": {
+                    "aj": { "name": "ajmid", "price": "299" },
+                    "paoxie": { "name": "paoxie", "price": "155" },
+                    "banxie": { "name": "banxie", "price": "69" },
+                },
+            }
+        }
+    });
+</script>
+
+</html>
