@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../课后作业/jquery.js"></script>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <input type="text" id='username'>
+        <br>
+        <button id='click1' onclick="huoqu1()">点击获取值1</button>
+        <br>
+        <br>
+        <button id='click2'>点击获取值</button>
+        <br>
+        <br>
+        <button id='click3'>点击获取值3</button>
+    </div>
+    <br>
+    <br>
+    <div id='app'>
+        <input type="text" id='username2'>
+        <br>
+        <button v-on:click="dianji1(this)" v-bind:bname='bname' ref='vue_click1' id='vue_click1'>点击我1</button>
+        <br> <br>
+
+        <button @click="dianji1($event)" v-bind:bname='bname' ref='vue_click2' id='vue_click2'>点击我2</button>
+    </div>
+</body>
+<script>
+    function huoqu1() {
+        let username = document.getElementById("username");
+        console.log(username);
+        let val = username.value;
+        console.log(val);
+        alert(val)
+    }
+
+    var btn = document.getElementById("click2");
+
+    // 第一种 通过点击事件
+    btn.onclick = function () {
+        let username = document.getElementById("username");
+        console.log(username);
+        let val = username.value;
+        console.log(val);
+        alert(val)
+
+    }
+
+    $(document).on("click", "#click3", function () {
+        let username = document.getElementById("username");
+        console.log(username);
+        let val = username.value;
+        console.log(val);
+        alert(val)
+    })
+
+    function dianji1(this1 = null) {
+        let buttons1 = document.getElementById("vue_click2");//1 直接使用原生js 获取元素 并没有使用VUE的方法
+        console.log(buttons1);
+        let bname1 = buttons1.getAttribute("bname");
+        console.log(bname1);
+
+        console.log(this.$refs);//获取 VUE里 所有添加过 ref 属性的 元素
+
+        let buttons = this.$refs.vue_click2;//2 使用VUE的方法 获取元素属性 给元素添加 ref 属性 = 自定义名称
+        console.log(buttons);
+        let bname = buttons.getAttribute("bname");
+        console.log(bname);
+        // if (this1 !== null) {
+        //     console.log(this1);
+        //     console.log(this2);
+
+
+        //     console.log(this2.name);
+        // }
+        alert(this.name);
+    }
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            name: "qxc",
+            bname: "name123",
+        },
+        methods: {
+            dianji1: dianji1,
+        }
+    });
+</script>
+
+</html>
