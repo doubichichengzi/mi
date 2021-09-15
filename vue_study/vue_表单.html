@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        #app>div {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <div>
+            <input type="text" value="" v-model="username" id='username'>
+            <span>你输入的：{{username}}</span>
+        </div>
+        <div>
+            <p>你的爱好</p>
+            <input type="checkbox" value="游戏" v-model='love1'>游戏
+            <input type="checkbox" value="美食" v-model='love1'>美食
+            <input type="checkbox" value="兜风" v-model='love1'>兜风
+            <br>
+            <span>你的爱好是 {{love1}}</span>
+        </div>
+        <div>
+            <p>性别</p>
+            <input type="radio" value="男" v-model='sex' id='boy'>
+            <label for="boy">男</label>
+            <input type="radio" value="女" v-model='sex' id='girl'>
+            <label for="girl">女</label>
+
+            <br>
+            <span>性别是 {{sex}}</span>
+        </div>
+        <div>
+            <textarea name="" id="zwjs" cols="30" rows="10" v-model="zwjs"></textarea>
+        </div>
+        <div>
+            <button @click="submit_form()">提交</button>
+        </div>
+    </div>
+</body>
+<script>
+    var data = {
+        username: "",
+        zwjs: "",
+        love1: [],
+        sex: "",
+    };
+    var vm = new Vue({
+        "el": "#app",
+        data: data,
+        methods: {
+            submit_form: function () {
+                let tijiao_data = {
+                    "username": this.username,
+                    "zwjs": this.zwjs,
+                    "love1": this.love1,
+                    "sex": this.sex,
+
+                }
+                console.log(tijiao_data);
+                console.log(tijiao_data.love1);
+            }
+        }
+    });
+</script>
+
+</html>

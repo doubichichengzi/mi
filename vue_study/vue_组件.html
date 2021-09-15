@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 若使用 变量 加： -->
+        <button-zdy v-for='val,key in list' title="我的小组件1：" :basename='val' @dianji1='clicknow'></button-zdy>
+        <test1></test1>
+    </div>
+</body>
+<script>
+    function cname(name = '') {
+        console.log(name);
+    }
+    function name1() {
+        let name = 'qxc';
+        cname(name);
+    }
+    name1();
+    //npm config set prefix "D:\Program Files\nodejs\node_global"
+    D: \nodejs\node_modules\
+
+    // 1:标签名称 2：options 选项设置
+    Vue.component("button-zdy", {
+        props: ["title", "basename", "bname1"],
+        data: function () {
+            return {
+                "count": 0,
+            }
+        },
+        template: "<button @click='click_jia1()'>{{basename}} 点击{{count}}次数</button>",
+        methods: {
+            click_jia1: function () {
+                this.count++;
+                console.log(this.basename);
+                //cname(name);
+                //自定义方法 并 触发事件  并且传参数  就是用用方法  1：方法名称,2:参数
+                this.$emit("dianji1", this.count);
+            }
+        }
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            "list": ["组件1:", "组件2:"]
+        },
+        methods: {
+            clicknow: function (count = 0) {
+                console.log(count);
+            }
+        },
+        components: {
+            test1: {
+                template: "<h1>我是h1组件</h1>",
+            }
+        }
+    });
+</script>
+
+</html>
