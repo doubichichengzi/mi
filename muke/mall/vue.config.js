@@ -3,14 +3,15 @@ module.exports = {
         host: "localhost",
         port: 8080,
         proxy: {
-            '/api': {
+            '/dbapi': {
                 target: "https://db.topcdb.com",
                 //  chageOrigin: false,是否将主机头 改为目标的url
                 chageOrigin: true,
                 pathRewrite: {//路径 重写
-                    "api": "api",
+                    "dbapi": '',
                 }
-            }
+            },
+
         }
     }
 }
