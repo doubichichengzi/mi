@@ -38,6 +38,7 @@ export default {
   mounted() {
     // let url = "https://db.topcdb.com/api/get-chain";
     let url = "/dbapi/api/get-chain"; //获取院线
+    // let url = "https://db.topcdb.com/api/get-chain"; //获取院线
     let url2 = "/dbapi/api/get-schedule"; //获取院线
     // let data = axios.get(url);
     // console.log(data);
